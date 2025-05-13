@@ -45,9 +45,9 @@ get.survival <- function(Y, Delta, A, R=0,
     inner.func.2 <- int.vals[,k]
     k1 <- which(fit.times==t0)
     augment <- omega.hats*S.hats.t0*as.numeric(A==1)*(inner.func.1 - inner.func.2)/g.hats
-    if.func <- S.hats.t0 - augment
+    if.func <- S.hats.t0*I(R==0) - augment
     surv[k1] <- mean(if.func)
-    IF.vals[,k1] <- (if.func - mean(if.func))*I(R==0) - augment*I(R!=0)
+    IF.vals[,k1] <- if.func - mean(if.func)
     AUG.means[k1] <- mean(augment)
   }
   surv = pmin(1, pmax(0, surv))

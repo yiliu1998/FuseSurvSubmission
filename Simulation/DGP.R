@@ -48,8 +48,8 @@ DGP <- function(M=600, N=rep(1000, 5), case="homo", s=311) {
     delta.t <- -0.36-0.1*(X1-25)+0.05*(X2-25)+0.05*(X3-2) + D.T*0.02*(X1+X3-25)
     ph.t <- exp(-5.02+0.1*(X1-25)-0.1*(X2-25)+0.05*(X3-2) - D.T*0.03*(X3-X1+20) + A*delta.t)
     
-    delta.c <- -0.4+0.01*(X1-25)-0.02*(X2-25)+0.01*(X3-2) - D.C*0.025*(X1+X2+X3-50)
-    ph.c <- exp(-4.87+0.01*(X1-25)-0.02*(X2-25)+0.01*(X3-2) - D.C*0.025*(X2-25) + A*delta.c)
+    delta.c <- -0.4+0.01*(X1-25)-0.02*(X2-25)+0.01*(X3-2) - D.C*0.01*(X1+X3-26)
+    ph.c <- exp(-4.87+0.01*(X1-25)-0.02*(X2-25)+0.01*(X3-2) - D.C*0.02*(X3-X1+20) + A*delta.c)
     
     u1 <- runif(sum(N))
     u2 <- runif(sum(N))
@@ -87,8 +87,9 @@ dat.diffC <- DGP(case="diffC", N=c(300, rep(600, 4)))
 dat.diffAll <- DGP(case="diffAll", N=c(300, rep(600, 4)))
 save(file="obsdata_l2.Rdata", dat.homo, dat.diffX, dat.diffT, dat.diffC, dat.diffAll)
 
+
 ### Additional simulations for seeing RMSE on sample size changes
-dat1 <- DGP(case="diffX", N=c(100, rep(100, 4)))
+dat1 <- DGP(case="diffX", N=c(200, rep(200, 4)))
 dat2 <- DGP(case="diffX", N=c(400, rep(400, 4)))
 dat3 <- DGP(case="diffX", N=c(1000, rep(1000, 4)))
 save(file="add_dat.Rdata", dat1, dat2, dat3)
