@@ -86,10 +86,3 @@ dat.diffT <- DGP(case="diffT", N=c(300, rep(600, 4)))
 dat.diffC <- DGP(case="diffC", N=c(300, rep(600, 4)))
 dat.diffAll <- DGP(case="diffAll", N=c(300, rep(600, 4)))
 save(file="obsdata_l2.Rdata", dat.homo, dat.diffX, dat.diffT, dat.diffC, dat.diffAll)
-
-
-### Additional simulations for seeing RMSE on sample size changes
-dat1 <- DGP(case="diffX", N=c(200, rep(200, 4)))
-dat2 <- DGP(case="diffX", N=c(400, rep(400, 4)))
-dat3 <- DGP(case="diffX", N=c(1000, rep(1000, 4)))
-save(file="add_dat.Rdata", dat1, dat2, dat3)
